@@ -1,7 +1,411 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="서울대학교 첨단융합학부 26학번 정다율의 개인 홈페이지입니다.">
+  <meta name="theme-color" content="#0b1020">
+  <title>정다율 | 개인 홈페이지</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --surface: #121a2f;
+      --text: #f7f9ff;
+      --muted: #aeb9d2;
+      --line: rgba(255, 255, 255, 0.11);
+      --accent: #7dd3fc;
+      --accent-strong: #38bdf8;
+      --max-width: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 85% 5%, rgba(56, 189, 248, 0.12), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 100;
+      padding: 0.7rem 1rem;
+      border-radius: 0.5rem;
+      background: var(--text);
+      color: var(--bg);
+      transform: translateY(-200%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .container {
+      width: min(calc(100% - 2.5rem), var(--max-width));
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(11, 16, 32, 0.82);
+      backdrop-filter: blur(14px);
+    }
+
+    nav {
+      display: flex;
+      min-height: 4.5rem;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text);
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      display: grid;
+      width: 2.25rem;
+      height: 2.25rem;
+      place-items: center;
+      border: 1px solid rgba(125, 211, 252, 0.45);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(0.85rem, 3vw, 2rem);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--accent); }
+    main { overflow: hidden; }
+
+    .hero {
+      display: grid;
+      min-height: calc(100svh - 4.5rem);
+      grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.65fr);
+      align-items: center;
+      gap: clamp(3rem, 8vw, 7rem);
+      padding-block: clamp(5rem, 12vw, 9rem);
+    }
+
+    .eyebrow,
+    .section-label {
+      margin: 0 0 1rem;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 13ch;
+      margin-bottom: 1.5rem;
+      font-size: clamp(3.4rem, 10vw, 7.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+    }
+
+    .hero-intro {
+      max-width: 37rem;
+      margin-bottom: 2.2rem;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 3rem;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.1rem;
+      border: 1px solid rgba(125, 211, 252, 0.4);
+      border-radius: 999px;
+      background: rgba(125, 211, 252, 0.08);
+      color: var(--text);
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      border-color: var(--accent);
+      background: rgba(125, 211, 252, 0.16);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 1.5rem;
+      background: linear-gradient(145deg, rgba(24, 35, 61, 0.92), rgba(18, 26, 47, 0.72));
+      box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 2rem;
+      width: 4rem;
+      height: 2px;
+      background: var(--accent-strong);
+    }
+
+    .hero-card strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1.15rem;
+    }
+
+    .hero-card p { margin-bottom: 0; color: var(--muted); }
+
+    section:not(.hero) {
+      scroll-margin-top: 5rem;
+      padding-block: clamp(5rem, 10vw, 8rem);
+      border-top: 1px solid var(--line);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(12rem, 0.65fr) minmax(0, 1.35fr);
+      gap: clamp(2.5rem, 8vw, 7rem);
+    }
+
+    h2 {
+      margin-bottom: 1.25rem;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    .section-copy {
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .section-copy strong { color: var(--text); }
+
+    .interest-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .interest-list li {
+      min-height: 12rem;
+      padding: 1.35rem;
+      border: 1px solid var(--line);
+      border-radius: 1.1rem;
+      background: var(--surface);
+    }
+
+    .interest-number {
+      display: block;
+      margin-bottom: 2.5rem;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 750;
+    }
+
+    .interest-list h3 { margin-bottom: 0.65rem; font-size: 1.1rem; }
+
+    .interest-list p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .contact-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: clamp(1.5rem, 5vw, 2.5rem);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: var(--surface);
+    }
+
+    .contact-box h2 {
+      margin-bottom: 0.55rem;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+    }
+
+    .contact-box p { margin-bottom: 0; color: var(--muted); }
+
+    footer {
+      padding-block: 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+    @media (max-width: 760px) {
+      .container { width: min(calc(100% - 2rem), var(--max-width)); }
+      nav { min-height: 4rem; }
+      .logo > span:last-child { display: none; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.86rem; }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding-block: 5.5rem;
+      }
+
+      h1 { font-size: clamp(3.2rem, 18vw, 5rem); }
+      .section-grid, .interest-list { grid-template-columns: 1fr; }
+      .section-grid { gap: 1.5rem; }
+      .interest-list li { min-height: auto; }
+      .interest-number { margin-bottom: 1.5rem; }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .button { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
 <body>
-<h1>안녕하세요, 제 홈페이지입니다</h1>
-<p>GitHub Pages로 만들었습니다!</p>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+
+  <header>
+    <nav class="container" aria-label="주요 메뉴">
+      <a class="logo" href="#top" aria-label="정다율 홈페이지 처음으로">
+        <span class="logo-mark" aria-hidden="true">JD</span>
+        <span>정다율</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#interests">관심사</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero container" id="top" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Student · SNU 26</p>
+        <h1 id="hero-title">안녕하세요,<br>정다율입니다.</h1>
+        <p class="hero-intro">서울대학교 첨단융합학부에서 배우며, 서로 다른 생각과 기술이 만나는 지점을 탐색하고 있습니다.</p>
+        <a class="button" href="#about">더 알아보기 <span aria-hidden="true">↓</span></a>
+      </div>
+      <aside class="hero-card" aria-label="소속 정보">
+        <p class="section-label">Currently</p>
+        <strong>서울대학교</strong>
+        <p>첨단융합학부 26학번 재학</p>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="container section-grid">
+        <div>
+          <p class="section-label">About</p>
+          <h2>소개</h2>
+        </div>
+        <div class="section-copy">
+          <p><strong>새로운 것을 배우고 연결하는 과정</strong>을 좋아합니다.</p>
+          <p>서울대학교 첨단융합학부 26학번으로 재학하며, 다양한 분야를 열린 시선으로 바라보고 저만의 방향을 차근차근 만들어가고 있습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="interests">
+      <div class="container">
+        <p class="section-label">Interests</p>
+        <h2>관심사</h2>
+        <ul class="interest-list">
+          <li>
+            <span class="interest-number">01</span>
+            <h3>첨단 기술</h3>
+            <p>새로운 기술이 우리의 일상과 가능성을 어떻게 바꾸는지 관심을 갖고 살펴봅니다.</p>
+          </li>
+          <li>
+            <span class="interest-number">02</span>
+            <h3>융합적 문제 해결</h3>
+            <p>하나의 관점에 머물지 않고 여러 분야의 생각을 연결해 답을 찾는 과정을 좋아합니다.</p>
+          </li>
+          <li>
+            <span class="interest-number">03</span>
+            <h3>새로운 배움</h3>
+            <p>낯선 주제에도 호기심을 갖고 직접 시도하며 경험의 폭을 넓혀가고 있습니다.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <p class="section-label">Contact</p>
+            <h2>연락처</h2>
+            <p>GitHub에서 저의 작업을 확인할 수 있습니다.</p>
+          </div>
+          <a class="button" href="https://github.com/dayool06" target="_blank" rel="noopener noreferrer" aria-label="정다율의 GitHub 프로필 새 창에서 열기">GitHub 방문하기 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 정다율</div>
+  </footer>
 </body>
 </html>
