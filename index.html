@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="서울대학교 첨단융합학부 26학번 정다율의 개인 홈페이지입니다.">
-  <meta name="theme-color" content="#0b1020">
+  <meta name="theme-color" content="#ffffff">
   <title>정다율 | 개인 홈페이지</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #0b1020;
-      --surface: #121a2f;
-      --text: #f7f9ff;
-      --muted: #aeb9d2;
-      --line: rgba(255, 255, 255, 0.11);
-      --accent: #7dd3fc;
-      --accent-strong: #38bdf8;
+      color-scheme: light;
+      --bg: #ffffff;
+      --surface: #f5f7fa;
+      --text: #2f3338;
+      --muted: #626a73;
+      --line: rgba(47, 51, 56, 0.14);
+      --accent: #0f6b8e;
+      --accent-strong: #0284c7;
       --max-width: 1080px;
     }
 
@@ -26,7 +26,7 @@
       margin: 0;
       min-width: 320px;
       background:
-        radial-gradient(circle at 85% 5%, rgba(56, 189, 248, 0.12), transparent 28rem),
+        radial-gradient(circle at 85% 5%, rgba(2, 132, 199, 0.08), transparent 28rem),
         var(--bg);
       color: var(--text);
       font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
@@ -61,7 +61,7 @@
       top: 0;
       z-index: 10;
       border-bottom: 1px solid var(--line);
-      background: rgba(11, 16, 32, 0.82);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(14px);
     }
 
@@ -87,7 +87,7 @@
       width: 2.25rem;
       height: 2.25rem;
       place-items: center;
-      border: 1px solid rgba(125, 211, 252, 0.45);
+      border: 1px solid rgba(15, 107, 142, 0.38);
       border-radius: 50%;
       color: var(--accent);
       font-size: 0.78rem;
@@ -137,9 +137,29 @@
     h1 {
       max-width: 13ch;
       margin-bottom: 1.5rem;
-      font-size: clamp(3.4rem, 10vw, 7.2rem);
-      line-height: 0.98;
-      letter-spacing: -0.065em;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-greeting,
+    .hero-name-line {
+      display: block;
+    }
+
+    .hero-name {
+      display: inline-block;
+      margin-top: 0.12em;
+      font-size: clamp(3.8rem, 9vw, 6.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-ending {
+      display: inline-block;
+      margin-left: 0.18em;
+      font-size: 1em;
+      letter-spacing: -0.04em;
     }
 
     .hero-intro {
@@ -156,9 +176,9 @@
       justify-content: center;
       gap: 0.5rem;
       padding: 0.7rem 1.1rem;
-      border: 1px solid rgba(125, 211, 252, 0.4);
+      border: 1px solid rgba(15, 107, 142, 0.38);
       border-radius: 999px;
-      background: rgba(125, 211, 252, 0.08);
+      background: rgba(2, 132, 199, 0.07);
       color: var(--text);
       font-weight: 700;
       text-decoration: none;
@@ -168,7 +188,7 @@
     .button:hover,
     .button:focus-visible {
       border-color: var(--accent);
-      background: rgba(125, 211, 252, 0.16);
+      background: rgba(2, 132, 199, 0.13);
       transform: translateY(-2px);
     }
 
@@ -177,8 +197,8 @@
       padding: 2rem;
       border: 1px solid var(--line);
       border-radius: 1.5rem;
-      background: linear-gradient(145deg, rgba(24, 35, 61, 0.92), rgba(18, 26, 47, 0.72));
-      box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+      background: linear-gradient(145deg, #ffffff, #f4f7fb);
+      box-shadow: 0 2rem 5rem rgba(47, 51, 56, 0.1);
     }
 
     .hero-card::before {
@@ -189,6 +209,16 @@
       width: 4rem;
       height: 2px;
       background: var(--accent-strong);
+    }
+
+    .profile-photo {
+      display: block;
+      width: min(100%, 22rem);
+      height: auto;
+      margin: 0 auto 1.75rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      box-shadow: 0 1rem 2.5rem rgba(47, 51, 56, 0.12);
     }
 
     .hero-card strong {
@@ -213,7 +243,7 @@
 
     h2 {
       margin-bottom: 1.25rem;
-      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
       line-height: 1.15;
       letter-spacing: -0.04em;
     }
@@ -273,10 +303,17 @@
 
     .contact-box h2 {
       margin-bottom: 0.55rem;
-      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
     }
 
     .contact-box p { margin-bottom: 0; color: var(--muted); }
+
+    .contact-box .contact-email {
+      margin-top: 0.4rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+    }
 
     footer {
       padding-block: 2rem;
@@ -301,7 +338,14 @@
         padding-block: 5.5rem;
       }
 
-      h1 { font-size: clamp(3.2rem, 18vw, 5rem); }
+      h1 { font-size: clamp(2.7rem, 12vw, 3.6rem); }
+      .hero-name { font-size: clamp(3.6rem, 16vw, 4.8rem); }
+
+      .hero-ending {
+        display: block;
+        margin-top: 0.15em;
+        margin-left: 0;
+      }
       .section-grid, .interest-list { grid-template-columns: 1fr; }
       .section-grid { gap: 1.5rem; }
       .interest-list li { min-height: auto; }
@@ -342,11 +386,12 @@
     <section class="hero container" id="top" aria-labelledby="hero-title">
       <div>
         <p class="eyebrow">Student · SNU 26</p>
-        <h1 id="hero-title">안녕하세요,<br>정다율입니다.</h1>
+        <h1 id="hero-title"><span class="hero-greeting">안녕하세요,</span><span class="hero-name-line"><span class="hero-name">정다율</span><span class="hero-ending">입니다.</span></span></h1>
         <p class="hero-intro">서울대학교 첨단융합학부에서 배우며, 서로 다른 생각과 기술이 만나는 지점을 탐색하고 있습니다.</p>
         <a class="button" href="#about">더 알아보기 <span aria-hidden="true">↓</span></a>
       </div>
-      <aside class="hero-card" aria-label="소속 정보">
+      <aside class="hero-card" aria-label="프로필과 소속 정보">
+        <img class="profile-photo" src="assets/증명사진.jpg" alt="정다율 프로필 사진" width="850" height="1054">
         <p class="section-label">Currently</p>
         <strong>서울대학교</strong>
         <p>첨단융합학부 26학번 재학</p>
@@ -397,6 +442,7 @@
             <p class="section-label">Contact</p>
             <h2>연락처</h2>
             <p>GitHub에서 저의 작업을 확인할 수 있습니다.</p>
+            <p class="contact-email">이메일: dayool06@snu.ac.kr</p>
           </div>
           <a class="button" href="https://github.com/dayool06" target="_blank" rel="noopener noreferrer" aria-label="정다율의 GitHub 프로필 새 창에서 열기">GitHub 방문하기 <span aria-hidden="true">↗</span></a>
         </div>
